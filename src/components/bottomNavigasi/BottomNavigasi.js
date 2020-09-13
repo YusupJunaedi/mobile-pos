@@ -1,7 +1,11 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {useDispatch} from 'react-redux';
+
+import {clearMenuCreator} from '../../redux/actions/action';
 
 const BottomNavigasi = ({navigation}) => {
+  const dispatch = useDispatch();
   return (
     <>
       <View
@@ -12,7 +16,10 @@ const BottomNavigasi = ({navigation}) => {
           borderColor: '#e8e8e8',
         }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => {
+            dispatch(clearMenuCreator());
+            navigation.navigate('Home');
+          }}
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Image
             source={require('../../assets/icons/home.png')}
@@ -38,12 +45,13 @@ const BottomNavigasi = ({navigation}) => {
           <Text style={{color: '#545454', marginTop: 4}}>History</Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.navigate('Account')}
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Image
             source={require('../../assets/icons/user.png')}
             style={{width: 23, height: 23}}
           />
-          <Text style={{color: '#545454', marginTop: 4}}>Akun</Text>
+          <Text style={{color: '#545454', marginTop: 4}}>Account</Text>
         </TouchableOpacity>
       </View>
     </>

@@ -1,10 +1,10 @@
-import actionType from "../actions/actionType";
+import actionType from '../actions/actionType';
 const intialState = {
   data: [],
   invoice: new Date().getTime(),
 };
 
-const cartReducer = (state = intialState, { type, payload }) => {
+const cartReducer = (state = intialState, {type, payload}) => {
   switch (type) {
     case actionType.addToCart:
       return {

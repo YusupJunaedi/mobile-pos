@@ -9,6 +9,9 @@ import {
 } from '../../redux/actions/action';
 
 const ListCart = () => {
+  useEffect(() => {
+    // useSelector((state) => state.cart.data);
+  }, [listCart]);
   const listCart = useSelector((state) => state.cart.data);
   const dispatch = useDispatch();
 

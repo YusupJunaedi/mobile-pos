@@ -1,8 +1,12 @@
 import React from 'react';
 import {View, Image, Text, TouchableOpacity, TextInput} from 'react-native';
 import {Button} from 'native-base';
+import {useDispatch} from 'react-redux';
+
+import {clearMenuCreator} from '../../redux/actions/action';
 
 const HeaderOrders = ({navigation}) => {
+  const dispatch = useDispatch();
   return (
     <>
       <View
@@ -12,7 +16,10 @@ const HeaderOrders = ({navigation}) => {
           backgroundColor: '#4abdac',
         }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => {
+            dispatch(clearMenuCreator());
+            navigation.navigate('Home');
+          }}
           style={{position: 'relative', marginLeft: 10, flex: 1}}>
           <Image
             source={require('../../assets/icons/back.png')}

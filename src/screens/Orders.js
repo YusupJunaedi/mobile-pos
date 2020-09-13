@@ -10,7 +10,7 @@ const Orders = ({navigation}) => {
     <>
       <View style={{flex: 1}}>
         <View style={{flex: 1}}>
-          <HeaderOrders />
+          <HeaderOrders navigation={navigation} />
           <ListCart />
         </View>
         <BottomNavigasi navigation={navigation} />

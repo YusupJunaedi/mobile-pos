@@ -39,10 +39,10 @@ const ListMenu = ({navigation}) => {
           }}>
           {listMenu.length ? (
             <Fragment>
-              {listMenu.map((item) => {
+              {listMenu.map((item, index) => {
                 return (
                   <TouchableOpacity
-                    key={item.id_product}
+                    key={index}
                     onPress={() => {
                       addToCart(
                         item.id_product,

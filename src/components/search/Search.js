@@ -1,20 +1,50 @@
-import React from 'react'
-import {View, Image, TextInput} from 'react-native'
+import React from 'react';
+import {View, Image, TextInput} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {searchMenuCreator} from '../../redux/actions/action';
 
 const Search = () => {
-    return(
-        <>
-            <View style={{flexDirection: 'row', paddingVertical: 10}}>
-                <View style={{position: "relative", flex: 1, marginLeft: 10}}>
-                    <TextInput placeholder="What do you want ?" style={{borderWidth: 1,borderColor: "#e8e8e8", borderRadius: 25, fontSize: 16, paddingLeft: 50, paddingRight: 25}} />
-                    <Image source={require("../../assets/icons/search.png")} style={{width: 25, height: 25, position: "absolute", left: 15, top: 12}} />
-                </View>
-                <View style={{justifyContent: "center", alignContent: "center"}}>
-                    <Image source={require("../../assets/images/arkademy.png")} style={{width: 100,height: 25}} />
-                </View>
-            </View>
-        </>
-    )
-}
+  const dispatch = useDispatch();
 
-export default Search
+  return (
+    <>
+      <View style={{flexDirection: 'row', paddingVertical: 10}}>
+        <View style={{position: 'relative', flex: 1, marginLeft: 10}}>
+          <TextInput
+            placeholder="What do you want ?"
+            style={{
+              borderWidth: 1,
+              borderColor: '#e8e8e8',
+              borderRadius: 25,
+              fontSize: 16,
+              paddingLeft: 50,
+              paddingRight: 25,
+            }}
+            onChangeText={(Text) =>
+              dispatch(searchMenuCreator(Text, 'name_product'))
+            }
+          />
+          <Image
+            source={require('../../assets/icons/search.png')}
+            style={{
+              width: 25,
+              height: 25,
+              position: 'absolute',
+              left: 15,
+              top: 12,
+            }}
+          />
+        </View>
+        <View style={{justifyContent: 'center', alignContent: 'center'}}>
+          <Image
+            source={require('../../assets/images/arkademy.png')}
+            style={{width: 100, height: 25}}
+          />
+        </View>
+      </View>
+    </>
+  );
+};
+
+export default Search;

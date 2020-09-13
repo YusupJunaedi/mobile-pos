@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Image, Text, TouchableOpacity, TextInput} from 'react-native';
 import {Button} from 'native-base';
 
-const HeaderOrders = () => {
+const HeaderOrders = ({navigation}) => {
   return (
     <>
       <View
@@ -12,6 +12,7 @@ const HeaderOrders = () => {
           backgroundColor: '#4abdac',
         }}>
         <TouchableOpacity
+          onPress={() => navigation.navigate('Home')}
           style={{position: 'relative', marginLeft: 10, flex: 1}}>
           <Image
             source={require('../../assets/icons/back.png')}

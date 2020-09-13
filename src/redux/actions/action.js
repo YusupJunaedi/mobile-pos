@@ -4,11 +4,11 @@ import {
   getAllCategory,
   authLogin,
   getAllTransaksi,
+  authRegister,
 } from '../../utils/http';
 import actionType from './actionType';
 
 export const getAllMenuCreator = () => {
-  console.log(getAllMenu());
   return {
     type: actionType.getAllMenu,
     payload: getAllMenu(),
@@ -23,7 +23,7 @@ export const clearMenuCreator = () => {
 
 export const searchMenuCreator = (name, by) => {
   return {
-    type: actionType.getAllMenu,
+    type: actionType.searchMenu,
     payload: searchMenu(name, by),
   };
 };
@@ -43,6 +43,7 @@ export const addToCartCreator = (data) => {
 };
 
 export const deleteCartCreator = (data) => {
+  console.log(data);
   return {
     type: actionType.deleteCart,
     payload: data,
@@ -79,6 +80,13 @@ export const authLoginCreator = (name, password) => {
   return {
     type: actionType.authLogin,
     payload: authLogin(name, password),
+  };
+};
+
+export const authRegisterCreator = (name, email, password) => {
+  return {
+    type: actionType.authLogin,
+    payload: authRegister(name, email, password),
   };
 };
 

@@ -3,17 +3,16 @@ import {View, Text, TextInput, Image, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {authLoginCreator} from '../redux/actions/action';
+import {authRegisterCreator} from '../redux/actions/action';
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
   const dispatch = useDispatch();
   const login = useSelector((state) => state.auth.isLogin);
   const auth = useSelector((state) => state.auth.data);
-
-  const [form, setForm] = useState({email: null, password: null});
+  const [form, setform] = useState({name: null, email: null, password: null});
 
   const handleSubmit = () => {
-    dispatch(authLoginCreator(form.email, form.password));
+    dispatch(authRegisterCreator(form.name, form.email, form.password));
   };
 
   useEffect(() => {
@@ -24,12 +23,11 @@ const Login = ({navigation}) => {
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={{fontWeight: 'bold', fontSize: 25}}>Sign In</Text>
+      <Text style={{fontWeight: 'bold', fontSize: 25}}>Register</Text>
       <View style={{marginTop: 20}}>
         <View style={{position: 'relative'}}>
           <TextInput
-            placeholder="email"
-            name="email"
+            placeholder="Name"
             style={{
               borderWidth: 1,
               borderColor: '#e8e8e8',
@@ -40,7 +38,33 @@ const Login = ({navigation}) => {
               paddingLeft: 50,
               paddingRight: 20,
             }}
-            onChangeText={(Text) => setForm({...form, email: Text})}
+            onChangeText={(Text) => setform({...form, name: Text})}
+          />
+          <Image
+            source={require('../assets/icons/user-form.png')}
+            style={{
+              width: 30,
+              height: 30,
+              position: 'absolute',
+              top: 10,
+              left: 12,
+            }}
+          />
+        </View>
+        <View style={{position: 'relative', marginTop: 20}}>
+          <TextInput
+            placeholder="email"
+            style={{
+              borderWidth: 1,
+              borderColor: '#e8e8e8',
+              borderRadius: 25,
+              backgroundColor: 'white',
+              width: 350,
+              fontSize: 18,
+              paddingLeft: 50,
+              paddingRight: 20,
+            }}
+            onChangeText={(Text) => setform({...form, email: Text})}
           />
           <Image
             source={require('../assets/icons/open-mail.png')}
@@ -67,7 +91,7 @@ const Login = ({navigation}) => {
               paddingLeft: 50,
               paddingRight: 20,
             }}
-            onChangeText={(Text) => setForm({...form, password: Text})}
+            onChangeText={(Text) => setform({...form, password: Text})}
           />
           <Image
             source={require('../assets/icons/lock.png')}
@@ -89,19 +113,19 @@ const Login = ({navigation}) => {
             style={{backgroundColor: '#4abdac'}}
             onPress={handleSubmit}>
             <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
-              LOG IN
+              CREATE ACCOUNT
             </Text>
           </Button>
         </TouchableOpacity>
       </View>
       <View style={{flexDirection: 'row', marginTop: 25}}>
-        <Text style={{fontSize: 16}}>Don't have an account?</Text>
+        <Text style={{fontSize: 16}}>Already have an account?</Text>
         <TouchableOpacity>
           <Text
             style={{fontSize: 16, fontWeight: 'bold', color: '#4abdac'}}
-            onPress={() => navigation.navigate('Register')}>
+            onPress={() => navigation.navigate('Login')}>
             {' '}
-            Create
+            Sign In
           </Text>
         </TouchableOpacity>
       </View>
@@ -109,4 +133,4 @@ const Login = ({navigation}) => {
   );
 };
 
-export default Login;
+export default Register;

@@ -1,8 +1,12 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useSelector, useDispatch} from 'react-redux';
-import {minusQtyCreator, plusQtyCreator} from '../../redux/actions/action';
+import {
+  minusQtyCreator,
+  plusQtyCreator,
+  deleteCartCreator,
+} from '../../redux/actions/action';
 
 const ListCart = () => {
   const listCart = useSelector((state) => state.cart.data);
@@ -25,6 +29,13 @@ const ListCart = () => {
     dispatch(minusQtyCreator(index));
   };
 
+  const deleteCart = (id) => {
+    const index = listCart.findIndex((item) => {
+      return item.id_product === id;
+    });
+    dispatch(deleteCartCreator(index));
+  };
+
   return (
     <>
       <View style={{marginTop: 30, flex: 1}}>
@@ -34,7 +45,7 @@ const ListCart = () => {
               {listCart.map((item) => {
                 return (
                   <View
-                    style={{flexDirection: 'row', marginBottom: 20}}
+                    style={{flexDirection: 'row', marginBottom: 25}}
                     key={item.id_product}>
                     <Image
                       source={{
@@ -95,6 +106,17 @@ const ListCart = () => {
                       <Text style={{fontSize: 16, fontWeight: 'bold'}}>
                         Rp. {item.price_product * item.qty}
                       </Text>
+                      <TouchableOpacity>
+                        <Button
+                          block
+                          danger
+                          style={{marginTop: 10, width: 100, borderRadius: 20}}
+                          onPress={() => deleteCart(item.id_product)}>
+                          <Text style={{color: 'white', fontWeight: 'bold'}}>
+                            Delete
+                          </Text>
+                        </Button>
+                      </TouchableOpacity>
                     </View>
                   </View>
                 );

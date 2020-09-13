@@ -9,7 +9,7 @@ const HeaderOrders = () => {
         style={{
           flexDirection: 'row',
           paddingVertical: 10,
-          backgroundColor: 'pink',
+          backgroundColor: '#4abdac',
         }}>
         <TouchableOpacity
           style={{position: 'relative', marginLeft: 10, flex: 1}}>

@@ -11,19 +11,22 @@ import Orders from './src/screens/Orders';
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import Account from './src/screens/Account';
+import BottomNavigator from './src/components/bottomNavigasi/BottomNavigator';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
+    // <Provider store={storeRedux}>
+    //   <BottomNavigator />
+    // </Provider>
+
     <NavigationContainer>
       <Provider store={storeRedux}>
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Orders" component={Orders} />
-          <Stack.Screen name="Account" component={Account} />
+          <Stack.Screen name="HomeApp" component={BottomNavigator} />
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

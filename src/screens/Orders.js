@@ -13,7 +13,6 @@ const Orders = ({navigation}) => {
           <HeaderOrders navigation={navigation} />
           <ListCart />
         </View>
-        <BottomNavigasi navigation={navigation} />
       </View>
     </>
   );

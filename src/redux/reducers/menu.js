@@ -1,30 +1,29 @@
-import actionType from "../actions/actionType";
+import actionType from '../actions/actionType';
 
 let initialState = {
   data: [],
-  error: "",
+  error: '',
   isPending: false,
   isFulfilled: false,
   isRejected: false,
 };
 
-const menuReducer = (prevState = initialState, { type, payload }) => {
+const menuReducer = (prevState = initialState, {type, payload}) => {
   switch (type) {
-    case actionType.getAllMenu + "_PENDING":
+    case actionType.getAllMenu + '_PENDING':
       return {
         ...prevState,
         isPending: true,
       };
-    case actionType.getAllMenu + "_REJECTED":
+    case actionType.getAllMenu + '_REJECTED':
       return {
         ...prevState,
         isRejected: true,
         data: payload,
         isPending: false,
       };
-    case actionType.getAllMenu + "_FULFILLED":
-      let newData = [...prevState.data];
-      payload.data.data.map((item) => {
+    case actionType.getAllMenu + '_FULFILLED':
+      let newData = payload.data.data.map((item) => {
         const dataMenu = {
           id_product: item.id_product,
           img_product: item.img_product,
@@ -33,7 +32,7 @@ const menuReducer = (prevState = initialState, { type, payload }) => {
           price_product: item.price_product,
           checked: false,
         };
-        return (newData = newData.concat(dataMenu));
+        return dataMenu;
       });
 
       return {
@@ -43,19 +42,19 @@ const menuReducer = (prevState = initialState, { type, payload }) => {
         data: newData,
         isRejected: false,
       };
-    case actionType.searchMenu + "_PENDING":
+    case actionType.searchMenu + '_PENDING':
       return {
         ...prevState,
         isPending: true,
       };
-    case actionType.searchMenu + "_REJECTED":
+    case actionType.searchMenu + '_REJECTED':
       return {
         ...prevState,
         isRejected: true,
         data: payload,
         isPending: false,
       };
-    case actionType.searchMenu + "_FULFILLED":
+    case actionType.searchMenu + '_FULFILLED':
       return {
         ...prevState,
         isFulfilled: true,

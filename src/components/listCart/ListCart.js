@@ -9,13 +9,8 @@ import {
 } from '../../redux/actions/action';
 
 const ListCart = () => {
-  useEffect(() => {
-    // useSelector((state) => state.cart.data);
-  }, [listCart]);
   const listCart = useSelector((state) => state.cart.data);
   const dispatch = useDispatch();
-
-  console.log(listCart);
 
   const handlePlus = (id) => {
     const index = listCart.findIndex((item) => {
@@ -33,10 +28,7 @@ const ListCart = () => {
   };
 
   const deleteCart = (id) => {
-    const index = listCart.findIndex((item) => {
-      return item.id_product === id;
-    });
-    dispatch(deleteCartCreator(index));
+    dispatch(deleteCartCreator(id));
   };
 
   return (

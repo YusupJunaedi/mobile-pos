@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {Thumbnail, Button} from 'native-base';
 import {useDispatch} from 'react-redux';
+import Modal from 'react-native-modal';
 
 import {logoutCreator} from '../redux/actions/action';
 
-import BottomNavigasi from '../components/bottomNavigasi/BottomNavigasi';
-
 const Account = ({navigation}) => {
   const dispatch = useDispatch();
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <View style={{flex: 1}}>
       <View
@@ -48,8 +52,7 @@ const Account = ({navigation}) => {
             block
             danger
             onPress={() => {
-              dispatch(logoutCreator());
-              navigation.navigate('Login');
+              toggleModal();
             }}>
             <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}>
               LOG OUT
@@ -57,7 +60,62 @@ const Account = ({navigation}) => {
           </Button>
         </TouchableOpacity>
       </View>
-      <BottomNavigasi navigation={navigation} />
+
+      <View>
+        <Modal
+          isVisible={isModalVisible}
+          animationIn="slideInLeft"
+          animationOut="slideOutRight">
+          <View
+            style={{
+              backgroundColor: 'white',
+              padding: 22,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 4,
+              borderColor: 'rgba(0, 0, 0, 0.1)',
+            }}>
+            <Text style={{fontSize: 20, marginBottom: 12}}>
+              are you sure you want to logout ?
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+              }}>
+              <View style={{paddingHorizontal: 10}}>
+                <TouchableOpacity>
+                  <Button
+                    style={{width: 100}}
+                    block
+                    rounded
+                    success
+                    onPress={() => {
+                      dispatch(logoutCreator());
+                      navigation.navigate('Login');
+                      toggleModal();
+                    }}>
+                    <Text style={{fontWeight: 'bold', color: 'white'}}>
+                      Yes
+                    </Text>
+                  </Button>
+                </TouchableOpacity>
+              </View>
+              <View style={{paddingHorizontal: 10}}>
+                <TouchableOpacity>
+                  <Button
+                    style={{width: 100}}
+                    block
+                    rounded
+                    danger
+                    onPress={toggleModal}>
+                    <Text style={{fontWeight: 'bold', color: 'white'}}>No</Text>
+                  </Button>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </View>
   );
 };

@@ -37,7 +37,11 @@ const ListMenu = ({navigation}) => {
             justifyContent: 'space-evenly',
             flexWrap: 'wrap',
           }}>
-          {listMenu.length ? (
+          {listMenu === undefined ? (
+            <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 20}}>
+              Menu not found!
+            </Text>
+          ) : listMenu.length ? (
             <Fragment>
               {listMenu.map((item, index) => {
                 return (

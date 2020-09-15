@@ -1,11 +1,7 @@
 import React from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
-import {useDispatch} from 'react-redux';
-
-import {clearMenuCreator} from '../../redux/actions/action';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 const BottomNavigasi = ({navigation}) => {
-  const dispatch = useDispatch();
   return (
     <>
       <View
@@ -17,10 +13,10 @@ const BottomNavigasi = ({navigation}) => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            dispatch(clearMenuCreator());
             navigation.navigate('Home');
           }}
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          {/* <Icon name="tachometer" size={35} /> */}
           <Image
             source={require('../../assets/icons/home.png')}
             style={{width: 23, height: 23}}

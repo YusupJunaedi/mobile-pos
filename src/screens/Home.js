@@ -20,7 +20,6 @@ const Home = ({navigation}) => {
         <Search />
         <ListMenu navigation={navigation} />
       </View>
-      <BottomNavigasi navigation={navigation} />
     </View>
   );
 };

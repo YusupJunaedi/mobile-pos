@@ -17,7 +17,7 @@ const Register = ({navigation}) => {
 
   useEffect(() => {
     if (login) {
-      return navigation.navigate('Home');
+      return navigation.navigate('HomeApp');
     }
   }, [auth]);
 

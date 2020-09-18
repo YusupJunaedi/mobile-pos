@@ -1,7 +1,12 @@
 import Axios from 'axios';
 
 export const getAllMenu = () => {
-  const URI = `http://192.168.43.116:8000/pagination?page=1&limit=9`;
+  const URI = `http://192.168.43.116:8000/pagination?page=1&limit=10`;
+  return Axios.get(URI);
+};
+
+export const getMoreMenu = (page) => {
+  const URI = `http://192.168.43.116:8000/pagination?page=${page}&limit=10`;
   return Axios.get(URI);
 };
 

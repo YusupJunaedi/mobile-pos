@@ -5,6 +5,7 @@ import {
   authLogin,
   getAllTransaksi,
   authRegister,
+  getMoreMenu,
 } from '../../utils/http';
 import actionType from './actionType';
 
@@ -12,6 +13,13 @@ export const getAllMenuCreator = () => {
   return {
     type: actionType.getAllMenu,
     payload: getAllMenu(),
+  };
+};
+
+export const getMoreMenuCreator = (page) => {
+  return {
+    type: actionType.getMoreMenu,
+    payload: getMoreMenu(page),
   };
 };
 

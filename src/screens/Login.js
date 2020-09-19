@@ -11,6 +11,7 @@ const Login = ({navigation}) => {
   const auth = useSelector((state) => state.auth.data);
 
   const [form, setForm] = useState({email: null, password: null});
+  console.log(auth);
 
   const handleSubmit = () => {
     dispatch(authLoginCreator(form.email, form.password));
@@ -21,6 +22,12 @@ const Login = ({navigation}) => {
       return navigation.navigate('HomeApp');
     }
   }, [auth]);
+
+  useEffect(() => {
+    if (login === true) {
+      return navigation.navigate('HomeApp');
+    }
+  }, []);
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

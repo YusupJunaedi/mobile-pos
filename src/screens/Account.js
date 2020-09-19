@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {Thumbnail, Button} from 'native-base';
 import {useDispatch} from 'react-redux';
 import Modal from 'react-native-modal';
+import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 
 import {logoutCreator} from '../redux/actions/action';
 
@@ -38,12 +39,15 @@ const Account = ({navigation}) => {
       </View>
       <View
         style={{
-          flex: 2,
+          flex: 1,
           alignItems: 'center',
         }}>
         <Text style={{marginTop: 80, fontWeight: 'bold', fontSize: 20}}>
           Yusup Junaedi
         </Text>
+      </View>
+      <View style={{flex: 1, alignItems: 'center'}}>
+        <Icon name="user-edit" size={45} />
       </View>
       <View style={{paddingHorizontal: 25, paddingBottom: 30}}>
         <TouchableOpacity>

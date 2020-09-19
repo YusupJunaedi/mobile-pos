@@ -23,6 +23,13 @@ export const getMoreMenuCreator = (page) => {
   };
 };
 
+export const dataEditMenuCreator = (data) => {
+  return {
+    type: actionType.editMenu,
+    payload: data,
+  };
+};
+
 export const clearMenuCreator = () => {
   return {
     type: actionType.clearMenu,

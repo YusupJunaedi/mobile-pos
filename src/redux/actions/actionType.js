@@ -16,6 +16,8 @@ const actionType = {
   getAllTransaksi: 'GET_ALL_TRANSAKSI',
   addTransaksi: 'ADD_TRANSAKSI',
   logout: 'AUTH_LOGOUT',
+  deleteMenu: 'DELETE_MENU',
+  editMenu: 'EDIT_MENU',
 };
 
 export default actionType;

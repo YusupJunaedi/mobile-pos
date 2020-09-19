@@ -1,4 +1,5 @@
 import React, {Fragment, useState, useEffect} from 'react';
+
 import {
   Text,
   View,
@@ -21,7 +22,7 @@ import {
 const ListMenu = ({navigation}) => {
   const listMenu = useSelector((state) => state.menu.data);
   const listCarts = useSelector((state) => state.cart.data);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
   // console.log(listMenu.length);
 
@@ -31,12 +32,13 @@ const ListMenu = ({navigation}) => {
     dispatch(getAllMenuCreator());
   }, []);
 
-  useEffect(() => {
-    dispatch(getMoreMenuCreator(page));
-  }, [page]);
+  // useEffect(() => {
+  //   dispatch(getMoreMenuCreator(page));
+  // }, [page]);
 
   const getMoreMenu = () => {
     setPage(page + 1);
+    dispatch(getMoreMenuCreator(page));
   };
 
   const addToCart = (id, name, price, img) => {
@@ -67,7 +69,7 @@ const ListMenu = ({navigation}) => {
               item.id_product,
               item.name_product,
               item.price_product,
-              item.img_product,
+              item.img,
             );
             navigation.navigate('Orders');
           }}>
@@ -75,7 +77,7 @@ const ListMenu = ({navigation}) => {
             <CardItem cardBody>
               <Image
                 source={{
-                  uri: item.img_product,
+                  uri: item.img,
                 }}
                 style={{height: 100, width: null, flex: 1}}
               />

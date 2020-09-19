@@ -2,6 +2,7 @@ import actionType from '../actions/actionType';
 
 let initialState = {
   data: [],
+  editMenu: [],
   error: '',
   isPending: false,
   isFulfilled: false,
@@ -26,10 +27,11 @@ const menuReducer = (prevState = initialState, {type, payload}) => {
       let newData = payload.data.data.map((item) => {
         const dataMenu = {
           id_product: item.id_product,
-          img_product: item.img_product,
+          image: item.image,
           name_category: item.name_category,
           name_product: item.name_product,
           price_product: item.price_product,
+          category_id: item.category_id,
           checked: false,
         };
         return dataMenu;
@@ -58,10 +60,11 @@ const menuReducer = (prevState = initialState, {type, payload}) => {
       let newData1 = payload.data.data.map((item) => {
         const dataMenu = {
           id_product: item.id_product,
-          img_product: item.img_product,
+          image: item.image,
           name_category: item.name_category,
           name_product: item.name_product,
           price_product: item.price_product,
+          category_id: item.category_id,
           checked: false,
         };
         return dataMenu;
@@ -76,6 +79,11 @@ const menuReducer = (prevState = initialState, {type, payload}) => {
         isPending: false,
         data: newArr,
         isRejected: false,
+      };
+    case actionType.editMenu:
+      return {
+        ...prevState,
+        editMenu: payload,
       };
     case actionType.searchMenu + '_PENDING':
       return {

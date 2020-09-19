@@ -10,23 +10,25 @@ import {PersistGate} from 'redux-persist/integration/react';
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import BottomNavigator from './src/components/bottomNavigasi/BottomNavigator';
-
-const {store, persistor} = configureStore();
+import EditMenu from './src/screens/EditMenu';
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  const {store, persistor} = configureStore();
+
   return (
     <NavigationContainer>
-      <PersistGate loading={null} persistor={persistor}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
           <Stack.Navigator headerMode="none">
+            <Stack.Screen name="HomeApp" component={BottomNavigator} />
+            <Stack.Screen name="EditMenu" component={EditMenu} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="HomeApp" component={BottomNavigator} />
           </Stack.Navigator>
-        </Provider>
-      </PersistGate>
+        </PersistGate>
+      </Provider>
     </NavigationContainer>
   );
 };

@@ -78,8 +78,9 @@ const EditMenu = ({navigation}) => {
           image: null,
           id_product: null,
         });
+
         dispatch(getAllMenuCreator());
-        navigation.navigate('HomeAdmin');
+        navigation.navigate('HomeApp');
       })
       .catch((err) => console.log(err));
   };

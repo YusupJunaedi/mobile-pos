@@ -10,8 +10,9 @@ import AddMenu from '../../screens/AddMenu';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const BottomNavigator = () => {
+const BottomNavigator = ({navigation}) => {
   const isAdmin = useSelector((state) => state.auth.isAdmin);
+  const listCart = useSelector((state) => state.cart.data);
 
   // return (
   //   <Tab.Navigator
@@ -97,6 +98,7 @@ const BottomNavigator = () => {
           options={{
             tabBarLabel: 'Orders',
             tabBarIcon: () => <Icon name="shopping-cart" size={25} />,
+            tabBarBadge: listCart.length,
           }}
         />
         <Tab.Screen

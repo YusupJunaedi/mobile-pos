@@ -7,7 +7,7 @@ const HomeAdmin = ({navigation}) => {
   return (
     <View style={{flex: 1, marginBottom: 70}}>
       <View style={{flex: 1}}>
-        <Search />
+        <Search navigation={navigation} />
         <ListMenuAdmin navigation={navigation} />
       </View>
     </View>

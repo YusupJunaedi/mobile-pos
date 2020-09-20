@@ -3,6 +3,7 @@ import actionType from '../actions/actionType';
 let initialState = {
   data: [],
   editMenu: [],
+  filterMenu: [],
   error: '',
   isPending: false,
   isFulfilled: false,
@@ -128,6 +129,27 @@ const menuReducer = (prevState = initialState, {type, payload}) => {
       return {
         ...prevState,
         data: [],
+      };
+    case actionType.filterMenu + '_PENDING':
+      return {
+        ...prevState,
+        isPending: true,
+      };
+    case actionType.filterMenu + '_REJECTED':
+      return {
+        ...prevState,
+        isRejected: true,
+        data: payload,
+        isPending: false,
+      };
+    case actionType.filterMenu + '_FULFILLED':
+      console.log(payload.data);
+      return {
+        ...prevState,
+        isFulfilled: true,
+        isPending: false,
+        filterMenu: payload.data.data,
+        isRejected: false,
       };
     default:
       return prevState;

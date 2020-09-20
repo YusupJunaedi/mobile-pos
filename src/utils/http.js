@@ -1,5 +1,10 @@
 import Axios from 'axios';
 
+export const filterMenu = (by, order) => {
+  const URI = `http://192.168.43.116:8000/sort?by=${by}&order=${order}`;
+  return Axios.get(URI);
+};
+
 export const getDataUser = (id) => {
   const URI = `http://192.168.43.116:8000/auth/getdata/${id}`;
   return Axios.get(URI);

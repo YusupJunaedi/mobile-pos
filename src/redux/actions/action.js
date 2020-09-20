@@ -7,8 +7,16 @@ import {
   authRegister,
   getMoreMenu,
   getDataUser,
+  filterMenu,
 } from '../../utils/http';
 import actionType from './actionType';
+
+export const filterMenuCreator = (by, order) => {
+  return {
+    type: actionType.filterMenu,
+    payload: filterMenu(by, order),
+  };
+};
 
 export const getDataUserCreator = (id) => {
   return {

@@ -19,8 +19,8 @@ import {
 } from '../../redux/actions/action';
 import Modal from 'react-native-modal';
 
-const ListMenuAdmin = ({navigation}) => {
-  const listMenu = useSelector((state) => state.menu.data);
+const ListMenuAdminFilter = ({navigation}) => {
+  const listMenu = useSelector((state) => state.menu.filterMenu);
 
   const [page, setPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +41,6 @@ const ListMenuAdmin = ({navigation}) => {
 
   useEffect(() => {
     dispatch(getAllMenuCreator());
-    setPage(2);
   }, []);
 
   const getMoreMenu = () => {
@@ -53,7 +52,7 @@ const ListMenuAdmin = ({navigation}) => {
     const URI = `http://192.168.43.116:8000/deleteproduct/${product.id_product}`;
     return Axios.delete(URI).then((res) => {
       dispatch(getAllMenuCreator());
-      setPage(2);
+      navigation.navigate('HomeAdmin');
     });
   };
 
@@ -186,7 +185,6 @@ const ListMenuAdmin = ({navigation}) => {
                     onPress={() => {
                       dispatch(dataEditMenuCreator(product));
                       toggleModal();
-                      setPage(2);
                       navigation.navigate('EditMenu');
                     }}>
                     <Text style={{fontWeight: 'bold', color: 'white'}}>
@@ -205,6 +203,7 @@ const ListMenuAdmin = ({navigation}) => {
                     onPress={() => {
                       deleteMenu();
                       toggleModal();
+                      navigation.navigate('HomeAdmin');
                     }}>
                     <Text style={{fontWeight: 'bold', color: 'white'}}>
                       Delete
@@ -220,4 +219,4 @@ const ListMenuAdmin = ({navigation}) => {
   );
 };
 
-export default ListMenuAdmin;
+export default ListMenuAdminFilter;

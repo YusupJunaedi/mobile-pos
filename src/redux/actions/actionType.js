@@ -19,6 +19,7 @@ const actionType = {
   deleteMenu: 'DELETE_MENU',
   editMenu: 'EDIT_MENU',
   getDataUser: 'GET_DATA_USER',
+  filterMenu: 'FILTER_MENU',
 };
 
 export default actionType;

@@ -10,6 +10,7 @@ import {logoutCreator, getDataUserCreator} from '../redux/actions/action';
 const Account = ({navigation}) => {
   const auth = useSelector((state) => state.auth.data.data);
   const dataUser = useSelector((state) => state.auth.dataUser);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   const dispatch = useDispatch();
 

@@ -8,13 +8,12 @@ import {searchMenuCreator, filterMenuCreator} from '../../redux/actions/action';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import Modal from 'react-native-modal';
 
-const Search = ({navigation}) => {
+const SearchFilter = ({navigation}) => {
   const dispatch = useDispatch();
   const [menu, setmenu] = useState(null);
   const [isModalVisible, setModalVisible] = useState(false);
   const [filter, setFilter] = useState(1);
   const filterMenus = useSelector((state) => state.menu.filterMenu);
-  console.log(filterMenus);
 
   const filterMenu = () => {
     let data = null;
@@ -52,8 +51,6 @@ const Search = ({navigation}) => {
     }
 
     dispatch(filterMenuCreator(data.by, data.order));
-    toggleModal();
-    navigation.navigate('FilterMenu');
   };
 
   const toggleModal = () => {
@@ -67,6 +64,23 @@ const Search = ({navigation}) => {
           paddingVertical: 10,
           backgroundColor: '#4abdac',
         }}>
+        <View style={{width: 50, justifyContent: 'center'}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('HomeApp');
+            }}
+            style={{
+              marginLeft: 5,
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={require('../../assets/icons/back.png')}
+              style={{width: 25, height: 25, position: 'absolute', left: 10}}
+            />
+          </TouchableOpacity>
+        </View>
         <View style={{position: 'relative', flex: 1, marginLeft: 10}}>
           <TextInput
             placeholder="What do you want ?"
@@ -157,6 +171,7 @@ const Search = ({navigation}) => {
                       success
                       onPress={() => {
                         filterMenu();
+                        toggleModal();
                       }}>
                       <Text style={{fontWeight: 'bold', color: 'white'}}>
                         Filter
@@ -187,4 +202,4 @@ const Search = ({navigation}) => {
   );
 };
 
-export default Search;
+export default SearchFilter;

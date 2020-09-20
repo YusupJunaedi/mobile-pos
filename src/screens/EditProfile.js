@@ -90,7 +90,7 @@ const EditProfile = ({navigation}) => {
             }}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('HomeAdmin');
+                navigation.navigate('Account');
               }}
               style={{position: 'relative', marginLeft: 10, flex: 1}}>
               <Image

@@ -81,7 +81,8 @@ const auth = (state = initialState, {type, payload}) => {
     case actionType.logout:
       return {
         ...state,
-        data: null,
+        data: {},
+        dataUser: {},
         isAdmin: false,
         isLogin: false,
         isPending: false,

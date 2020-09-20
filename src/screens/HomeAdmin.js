@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import ListMenuAdmin from '../components/listMenu/ListMenuAdmin';
 import Search from '../components/search/Search';

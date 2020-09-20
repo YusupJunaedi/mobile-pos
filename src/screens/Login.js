@@ -7,11 +7,13 @@ import {authLoginCreator} from '../redux/actions/action';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
-  const login = useSelector((state) => state.auth.isLogin);
+  let login = useSelector((state) => state.auth.isLogin);
   const auth = useSelector((state) => state.auth.data);
 
+  const isLogin = true;
+
   const [form, setForm] = useState({email: null, password: null});
-  console.log(auth);
+  console.log(login);
 
   const handleSubmit = () => {
     dispatch(authLoginCreator(form.email, form.password));
@@ -19,13 +21,14 @@ const Login = ({navigation}) => {
 
   useEffect(() => {
     if (login) {
-      return navigation.navigate('HomeApp');
+      navigation.navigate('HomeApp');
+      setForm({...form, email: null, password: null});
     }
   }, [auth]);
 
   useEffect(() => {
     if (login === true) {
-      return navigation.navigate('HomeApp');
+      navigation.navigate('HomeApp');
     }
   }, []);
 
@@ -35,6 +38,7 @@ const Login = ({navigation}) => {
       <View style={{marginTop: 20}}>
         <View style={{position: 'relative'}}>
           <TextInput
+            value={form.email}
             placeholder="email"
             name="email"
             style={{
@@ -62,6 +66,7 @@ const Login = ({navigation}) => {
         </View>
         <View style={{position: 'relative', marginTop: 20}}>
           <TextInput
+            value={form.password}
             secureTextEntry
             placeholder="password"
             style={{

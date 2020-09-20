@@ -18,6 +18,7 @@ const actionType = {
   logout: 'AUTH_LOGOUT',
   deleteMenu: 'DELETE_MENU',
   editMenu: 'EDIT_MENU',
+  getDataUser: 'GET_DATA_USER',
 };
 
 export default actionType;

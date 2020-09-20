@@ -1,14 +1,22 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {Thumbnail, Button} from 'native-base';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 
-import {logoutCreator} from '../redux/actions/action';
+import {logoutCreator, getDataUserCreator} from '../redux/actions/action';
 
 const Account = ({navigation}) => {
+  const auth = useSelector((state) => state.auth.data.data);
+  const dataUser = useSelector((state) => state.auth.dataUser);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDataUserCreator(auth.id_user));
+  }, []);
+
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -26,16 +34,32 @@ const Account = ({navigation}) => {
           justifyContent: 'flex-end',
           alignItems: 'center',
         }}>
-        <Thumbnail
-          source={require('../assets/images/man.jpg')}
-          style={{
-            width: 150,
-            height: 150,
-            borderRadius: 100,
-            position: 'absolute',
-            bottom: -70,
-          }}
-        />
+        {dataUser[0].image ? (
+          <Image
+            source={{uri: dataUser[0].image}}
+            style={{
+              width: 150,
+              height: 150,
+              borderRadius: 100,
+              position: 'absolute',
+              bottom: -70,
+            }}
+          />
+        ) : (
+          <Image
+            source={{
+              uri:
+                'https://edustustili.fi/wp-content/uploads/2016/09/no-profile-picture.jpg',
+            }}
+            style={{
+              width: 150,
+              height: 150,
+              borderRadius: 100,
+              position: 'absolute',
+              bottom: -70,
+            }}
+          />
+        )}
       </View>
       <View
         style={{
@@ -43,11 +67,46 @@ const Account = ({navigation}) => {
           alignItems: 'center',
         }}>
         <Text style={{marginTop: 80, fontWeight: 'bold', fontSize: 20}}>
-          Yusup Junaedi
+          {dataUser[0].username}
         </Text>
       </View>
-      <View style={{flex: 1, alignItems: 'center'}}>
-        <Icon name="user-edit" size={45} />
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Icon name="user-edit" color={'#4abdac'} size={35} />
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 20,
+                color: '#4abdac',
+                paddingRight: 15,
+              }}>
+              Edit Profile
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Icon name="clipboard-list" color={'#4abdac'} size={35} />
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 20,
+                color: '#4abdac',
+                paddingLeft: 15,
+              }}>
+              History
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
       <View style={{paddingHorizontal: 25, paddingBottom: 30}}>
         <TouchableOpacity>

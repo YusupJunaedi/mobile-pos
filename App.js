@@ -11,6 +11,7 @@ import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import BottomNavigator from './src/components/bottomNavigasi/BottomNavigator';
 import EditMenu from './src/screens/EditMenu';
+import EditProfile from './src/screens/EditProfile';
 
 const Stack = createStackNavigator();
 
@@ -22,10 +23,11 @@ const App = () => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Stack.Navigator headerMode="none">
-            <Stack.Screen name="HomeApp" component={BottomNavigator} />
-            <Stack.Screen name="EditMenu" component={EditMenu} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="EditProfile" component={EditProfile} />
+            <Stack.Screen name="HomeApp" component={BottomNavigator} />
+            <Stack.Screen name="EditMenu" component={EditMenu} />
           </Stack.Navigator>
         </PersistGate>
       </Provider>

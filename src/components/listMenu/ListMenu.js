@@ -69,7 +69,7 @@ const ListMenu = ({navigation}) => {
               item.id_product,
               item.name_product,
               item.price_product,
-              item.img,
+              item.image,
             );
             navigation.navigate('Orders');
           }}>
@@ -77,7 +77,7 @@ const ListMenu = ({navigation}) => {
             <CardItem cardBody>
               <Image
                 source={{
-                  uri: item.img,
+                  uri: item.image,
                 }}
                 style={{height: 100, width: null, flex: 1}}
               />

@@ -1,5 +1,10 @@
 import Axios from 'axios';
 
+export const getDataUser = (id) => {
+  const URI = `http://192.168.43.116:8000/auth/getdata/${id}`;
+  return Axios.get(URI);
+};
+
 export const getAllMenu = () => {
   const URI = `http://192.168.43.116:8000/pagination?page=1&limit=10`;
   return Axios.get(URI);

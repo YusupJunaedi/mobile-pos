@@ -17,7 +17,6 @@ const HeaderOrders = ({navigation}) => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            dispatch(clearMenuCreator());
             navigation.navigate('Home');
           }}
           style={{position: 'relative', marginLeft: 10, flex: 1}}>

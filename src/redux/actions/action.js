@@ -6,8 +6,16 @@ import {
   getAllTransaksi,
   authRegister,
   getMoreMenu,
+  getDataUser,
 } from '../../utils/http';
 import actionType from './actionType';
+
+export const getDataUserCreator = (id) => {
+  return {
+    type: actionType.getDataUser,
+    payload: getDataUser(id),
+  };
+};
 
 export const getAllMenuCreator = () => {
   return {

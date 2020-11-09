@@ -13,24 +13,26 @@ const Login = ({navigation}) => {
   const isLogin = true;
 
   const [form, setForm] = useState({email: null, password: null});
-  console.log(login);
+  // console.log(login);
 
   const handleSubmit = () => {
     dispatch(authLoginCreator(form.email, form.password));
   };
 
-  useEffect(() => {
-    if (login) {
-      navigation.navigate('HomeApp');
-      setForm({...form, email: null, password: null});
-    }
-  }, [auth]);
+  // useEffect(() => {
+  //   if (login) {
+  //     navigation.navigate('HomeApp');
+  //     setForm({...form, email: null, password: null});
+  //   }
+  // }, [auth]);
 
   useEffect(() => {
+    console.log(`is Login`, login);
     if (login === true) {
+      console.log('string biasa');
       navigation.navigate('HomeApp');
     }
-  }, []);
+  }, [login]);
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

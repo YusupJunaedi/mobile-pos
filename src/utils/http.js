@@ -1,42 +1,42 @@
 import Axios from 'axios';
 
 export const filterMenu = (by, order) => {
-  const URI = `http://192.168.43.116:8000/sort?by=${by}&order=${order}`;
+  const URI = `http://54.166.172.106:8000/sort?by=${by}&order=${order}`;
   return Axios.get(URI);
 };
 
 export const getDataUser = (id) => {
-  const URI = `http://192.168.43.116:8000/auth/getdata/${id}`;
+  const URI = `http://54.166.172.106:8000/auth/getdata/${id}`;
   return Axios.get(URI);
 };
 
 export const getAllMenu = () => {
-  const URI = `http://192.168.43.116:8000/pagination?page=1&limit=10`;
+  const URI = `http://54.166.172.106:8000/pagination?page=1&limit=10`;
   return Axios.get(URI);
 };
 
 export const getMoreMenu = (page) => {
-  const URI = `http://192.168.43.116:8000/pagination?page=${page}&limit=10`;
+  const URI = `http://54.166.172.106:8000/pagination?page=${page}&limit=10`;
   return Axios.get(URI);
 };
 
 export const getAllTransaksi = () => {
-  const URI = `http://192.168.43.116:8000/transaksi`;
+  const URI = `http://54.166.172.106:8000/transaksi`;
   return Axios.get(URI);
 };
 
 export const getAllCategory = () => {
-  const URI = `http://192.168.43.116:8000/categorys`;
+  const URI = `http://54.166.172.106:8000/categorys`;
   return Axios.get(URI);
 };
 
 export const searchMenu = (name, by) => {
-  const URI = `http://192.168.43.116:8000/search?name=${name}&by=${by}`;
+  const URI = `http://54.166.172.106:8000/search?name=${name}&by=${by}`;
   return Axios.get(URI);
 };
 
 export const authLogin = (email, password) => {
-  const URI = `http://192.168.43.116:8000/auth/login`;
+  const URI = `http://54.166.172.106:8000/auth/login`;
   return Axios.post(URI, {
     email: email,
     password: password,
@@ -44,7 +44,7 @@ export const authLogin = (email, password) => {
 };
 
 export const authRegister = (name, email, password) => {
-  const URI = `http://192.168.43.116:8000/auth/register`;
+  const URI = `http://54.166.172.106:8000/auth/register`;
   return Axios.post(URI, {
     username: name,
     email: email,

@@ -61,7 +61,7 @@ const AddMenu = ({navigation}) => {
       },
     };
 
-    const URL = `http://192.168.43.116:8000/addproduct`;
+    const URL = `http://54.166.172.106:8000/addproduct`;
     Axios.post(URL, formData, configHeader)
       .then((res) => {
         setform({

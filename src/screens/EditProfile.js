@@ -63,7 +63,7 @@ const EditProfile = ({navigation}) => {
       },
     };
 
-    const URL = `http://192.168.43.116:8000/auth/edit`;
+    const URL = `http://54.166.172.106:8000/auth/edit`;
     Axios.patch(URL, formData, configHeader)
       .then((res) => {
         console.log('response', res);

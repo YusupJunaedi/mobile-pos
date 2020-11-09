@@ -67,7 +67,7 @@ const EditMenu = ({navigation}) => {
       },
     };
 
-    const URL = `http://192.168.43.116:8000/updateproduct`;
+    const URL = `http://54.166.172.106:8000/updateproduct`;
     Axios.patch(URL, formData, configHeader)
       .then((res) => {
         console.log(res);

@@ -49,7 +49,7 @@ const ListMenuAdminFilter = ({navigation}) => {
   };
 
   const deleteMenu = () => {
-    const URI = `http://192.168.43.116:8000/deleteproduct/${product.id_product}`;
+    const URI = `http://54.166.172.106:8000/deleteproduct/${product.id_product}`;
     return Axios.delete(URI).then((res) => {
       dispatch(getAllMenuCreator());
       navigation.navigate('HomeAdmin');

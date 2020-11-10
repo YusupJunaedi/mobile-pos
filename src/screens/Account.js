@@ -9,7 +9,7 @@ import {logoutCreator, getDataUserCreator} from '../redux/actions/action';
 
 const Account = ({navigation}) => {
   const auth = useSelector((state) => state.auth.data.data);
-  const dataUser = useSelector((state) => state.auth.dataUser);
+  const dataUser = useSelector((state) => state.auth.data.data);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   const dispatch = useDispatch();
@@ -35,9 +35,9 @@ const Account = ({navigation}) => {
           justifyContent: 'flex-end',
           alignItems: 'center',
         }}>
-        {dataUser[0].image ? (
+        {dataUser.image !== undefined ? (
           <Image
-            source={{uri: dataUser[0].image}}
+            source={{uri: dataUser.image}}
             style={{
               width: 150,
               height: 150,
@@ -68,7 +68,7 @@ const Account = ({navigation}) => {
           alignItems: 'center',
         }}>
         <Text style={{marginTop: 80, fontWeight: 'bold', fontSize: 20}}>
-          {dataUser[0].username}
+          {dataUser.username}
         </Text>
       </View>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>

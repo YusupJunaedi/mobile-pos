@@ -51,7 +51,11 @@ const auth = (state = initialState, {type, payload}) => {
     case actionType.logout:
       return {
         ...state,
-        data: {},
+        data: {
+          data: {
+            image : 'https://edustustili.fi/wp-content/uploads/2016/09/no-profile-picture.jpg'
+          }
+        },
         isAdmin: false,
         isLogin: false,
         isPending: false,
